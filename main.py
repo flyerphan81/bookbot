@@ -6,16 +6,13 @@ def main():
     print(chars_dict)
 
 def character_count(text):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz.!?(),"\'-:;1234567890[]@#*_&/%$'
     letter_count ={}
-    words = text.split()
-    for char in alphabet:
-       letter_count[char] = 0
-    
-    for word in words:
-        lower_string = word.lower()
-        for char in lower_string:
-            letter_count[char] += 1
+    for char in text:
+        lowered = char.lower()
+        if lowered in letter_count and lowered.isalpha():
+            letter_count[lowered] += 1
+        elif lowered.isalpha():
+            letter_count[lowered] = 1   
     return letter_count
   
 def get_num_words(text):
