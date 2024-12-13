@@ -3,7 +3,13 @@ def main():
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     chars_dict = character_count(text)
-    print(chars_dict)
+    organize_dict(chars_dict)
+#    print(chars_dict)
+
+def organize_dict(chars_dict):
+    chars_dict_list = list(chars_dict.items())
+    chars_dict_list.sort(key=sort_on, reverse=True)
+    print(chars_dict_list)
 
 def character_count(text):
     letter_count ={}
