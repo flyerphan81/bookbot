@@ -3,13 +3,19 @@ def main():
     text = get_book_text(book_path)
     num_words = get_num_words(text)
     chars_dict = character_count(text)
-    organize_dict(chars_dict)
-#    print(chars_dict)
+    chars_list = []
+    for char, count in chars_dict.items():
+        chars_list.append({"char":char, "count": count})
+    
+    chars_list.sort(reverse=True, key=sort_on)
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"{num_words} words found in the document")
+    print("")
+    for char, count in chars_dict.items():
+        print(f"The {char} character was found {count} times")
 
-def organize_dict(chars_dict):
-    chars_dict_list = list(chars_dict.items())
-    chars_dict_list.sort(key=sort_on, reverse=True)
-    print(chars_dict_list)
+def sort_on(dict):
+    return dict["count"]
 
 def character_count(text):
     letter_count ={}
